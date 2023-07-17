@@ -1,19 +1,21 @@
 package com.nanemo.first_security_app.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.nanemo.first_security_app.annotation.DateMin;
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.stereotype.Component;
+import lombok.ToString;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+import java.time.LocalDate;
 
 @Getter
 @Setter
 @NoArgsConstructor
-@Component
+@ToString
 @Entity
 @Table(name = "persons")
 public class Person {
@@ -28,7 +30,12 @@ public class Person {
 
     @NotEmpty(message = "username can not be empty")
     @DateMin(value = "1991-04-04", message = "Date must not be lover than 4th April 1991")
+    @JsonFormat(pattern = "yyyy-DD-mm")
+    @Column(name = "birth_date")
+    private LocalDate birtDate;
+    @Size(min = 8, message = "password can not be lower than 8 characters")
     @Column(name = "password")
     private String password;
+
 }
 

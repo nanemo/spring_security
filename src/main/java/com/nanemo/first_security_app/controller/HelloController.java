@@ -9,15 +9,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/hello_controller")
 public class HelloController {
 
-    private final PersonDetailsService personDetailsService;
-
-    public HelloController(PersonDetailsService personDetailsService) {
-        this.personDetailsService = personDetailsService;
-    }
-
     @GetMapping
     public String hello(){
-        return personDetailsService.getPersonDetails();
+        return "hello";
     }
+
 
 }
