@@ -33,6 +33,7 @@ public class Person {
     @JsonFormat(pattern = "yyyy-DD-mm")
     @Column(name = "birth_date")
     private LocalDate birtDate;
+
     @Size(min = 8, message = "password can not be lower than 8 characters")
     @Column(name = "password")
     private String password;
