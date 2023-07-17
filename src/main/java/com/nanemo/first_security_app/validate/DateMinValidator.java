@@ -1,9 +1,9 @@
 package com.nanemo.first_security_app.validate;
 
 import com.nanemo.first_security_app.annotation.DateMin;
-import jakarta.validation.ConstraintValidator;
-import jakarta.validation.ConstraintValidatorContext;
 
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
 import java.time.LocalDate;
 
 public class DateMinValidator implements ConstraintValidator<DateMin, LocalDate> {

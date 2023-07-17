@@ -21,22 +21,22 @@ public class PersonDetails implements UserDetails {
 
     @Override
     public String getPassword() {
-        return null;
+        return this.person.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return null;
+        return this.person.getUsername();
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
@@ -48,4 +48,9 @@ public class PersonDetails implements UserDetails {
     public boolean isEnabled() {
         return false;
     }
+
+    public Person getPerson(){
+        return this.person;
+    }
+
 }
