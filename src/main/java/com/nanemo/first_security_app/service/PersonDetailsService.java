@@ -33,8 +33,4 @@ public class PersonDetailsService implements UserDetailsService {
         return new PersonDetails(person.get());
     }
 
-    public void registerPerson(Person person) {
-        peopleRepository.save(person);
-    }
-
 }
