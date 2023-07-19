@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-@Slf4j
 @Service
 public class PersonDetailsService implements UserDetailsService {
 
@@ -34,5 +33,8 @@ public class PersonDetailsService implements UserDetailsService {
         return new PersonDetails(person.get());
     }
 
+    public void registerPerson(Person person) {
+        peopleRepository.save(person);
+    }
 
 }
