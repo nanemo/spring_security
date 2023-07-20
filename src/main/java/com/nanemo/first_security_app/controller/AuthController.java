@@ -44,6 +44,8 @@ public class AuthController {
             return "auth/login";
         }
 
+        registrationService.registerPerson(person);
+
         return "redirect:/hello/show_user_info";
     }
 
