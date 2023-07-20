@@ -1,10 +1,8 @@
 package com.nanemo.first_security_app.util;
 
 import com.nanemo.first_security_app.entity.Person;
-import com.nanemo.first_security_app.service.PersonDetailsService;
-import com.nanemo.first_security_app.service.PersonService;
+import com.nanemo.first_security_app.service.RegistrationService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
@@ -13,7 +11,8 @@ import org.springframework.validation.Validator;
 @RequiredArgsConstructor
 public class PersonValidator implements Validator {
 
-    private final PersonService personService;
+    private final RegistrationService registrationService;
+
     @Override
     public boolean supports(Class<?> aClass) {
         return Person.class.equals(aClass);
@@ -23,5 +22,10 @@ public class PersonValidator implements Validator {
     public void validate(Object o, Errors errors) {
         Person person = (Person) o;
 
+        if (registrationService.findByUsername(person).isPresent()) {
+            errors.rejectValue("field", "", "This username is exist!");
+        }
+
     }
+
 }
