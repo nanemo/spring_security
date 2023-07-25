@@ -1,6 +1,7 @@
-package com.nanemo.first_security_app.util;
+package com.nanemo.first_security_app.validate;
 
-import com.nanemo.first_security_app.entity.Person;
+import com.nanemo.first_security_app.model.dto.PersonDto;
+import com.nanemo.first_security_app.model.entity.Person;
 import com.nanemo.first_security_app.service.RegistrationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -20,12 +21,14 @@ public class PersonValidator implements Validator {
 
     @Override
     public void validate(Object o, Errors errors) {
-        Person person = (Person) o;
+        PersonDto personDto = (PersonDto) o;
 
-        if (registrationService.findByUsername(person).isPresent()) {
-            errors.rejectValue("field", "", "This username is exist!");
-        }
+        checkUsernameExist(personDto, errors);
+    }
 
+    private void checkUsernameExist(PersonDto personDto, Errors errors) {
+        registrationService.findByUsername(personDto).ifPresent(error ->
+                errors.rejectValue("field", "", "This username is exist!"));
     }
 
 }

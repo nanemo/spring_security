@@ -1,6 +1,6 @@
 package com.nanemo.first_security_app.security;
 
-import com.nanemo.first_security_app.entity.Person;
+import com.nanemo.first_security_app.model.entity.Person;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 

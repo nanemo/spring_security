@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import static java.lang.System.out;
+
 @Controller
 @RequestMapping("/hello")
 public class HelloController {
@@ -20,7 +22,7 @@ public class HelloController {
     public String showUserInfo() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         PersonDetails personDetails = (PersonDetails) authentication.getPrincipal();
-        System.out.println(personDetails.getPerson());
+        out.println(personDetails.getPerson());
 
         return "hello";
     }
