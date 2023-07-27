@@ -20,7 +20,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable(). //here I turned off cross site referencing. Here is
+        http.
+//                .csrf().disable(). //here I turned off cross site referencing.
                 authorizeRequests()
                 .antMatchers("/auth/login", "/auth/registration", "/error").permitAll() // without these three line users can get
                 .anyRequest().authenticated()                               // pages without authentication.

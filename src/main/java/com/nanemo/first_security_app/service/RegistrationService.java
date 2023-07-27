@@ -19,7 +19,8 @@ public class RegistrationService {
     private final PasswordEncoder passwordEncoder;
 
     public Optional<PersonDto> findByUsername(PersonDto personDto) {
-        return registrationRepository.findByUsername(personMapper.toEntity(personDto).getUsername()).stream().map(personMapper::toDto).findFirst();
+        return registrationRepository.findByUsername(personMapper.toEntity(personDto).getUsername())
+                .stream().map(personMapper::toDto).findFirst();
     }
 
     @Transactional
