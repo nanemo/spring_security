@@ -1,7 +1,6 @@
 package com.nanemo.first_security_app.controller;
 
 import com.nanemo.first_security_app.model.dto.PersonDto;
-import com.nanemo.first_security_app.model.entity.Person;
 import com.nanemo.first_security_app.service.RegistrationService;
 import com.nanemo.first_security_app.validate.PersonValidator;
 import lombok.RequiredArgsConstructor;
@@ -38,15 +37,13 @@ public class AuthController {
     @PostMapping("/registration")
     public String registerPerson(@ModelAttribute("person") @Valid PersonDto personDto,
                                  BindingResult bindingResult) {
-        System.out.println(personDto.toString());
         personValidator.validate(personDto, bindingResult);
 
         if (bindingResult.hasErrors()) {
-            return "auth/login";
+            return "auth/registration";
         }
 
         registrationService.registerPerson(personDto);
-
         return "redirect:/hello/show_user_info";
     }
 

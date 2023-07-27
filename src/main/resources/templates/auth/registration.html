@@ -10,6 +10,7 @@
     <input type="text" th:field="*{username}" id="username"/>
     <div style="color: red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username Error</div>
     <br/>
+    <br/>
     <label for="birth_date">Enter birthdate</label>
     <input type="date" th:field="*{birthDate}" id="birth_date"/>
     <div style="color: red" th:if="${#fields.hasErrors('birthDate')}" th:errors="*{birthDate}">BirthDate Error</div>
@@ -19,6 +20,10 @@
     <div style="color: red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</div>
     <br/>
     <input type="submit" value="save">
+</form>
+
+<form th:method="GET" th:action="@{/auth/login}">
+    <input type="submit" value="back">
 </form>
 </body>
 </html>

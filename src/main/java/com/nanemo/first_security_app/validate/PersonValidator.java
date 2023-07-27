@@ -16,7 +16,7 @@ public class PersonValidator implements Validator {
 
     @Override
     public boolean supports(Class<?> aClass) {
-        return Person.class.equals(aClass);
+        return PersonDto.class.equals(aClass);
     }
 
     @Override
@@ -28,7 +28,7 @@ public class PersonValidator implements Validator {
 
     private void checkUsernameExist(PersonDto personDto, Errors errors) {
         registrationService.findByUsername(personDto).ifPresent(error ->
-                errors.rejectValue("field", "", "This username is exist!"));
+                errors.rejectValue("username", "", "This username exist!"));
     }
 
 }

@@ -2,6 +2,7 @@ package com.nanemo.first_security_app.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -23,6 +24,7 @@ public class Person {
     private String username;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @Column(name = "birth_date")
     private LocalDate birthDate;
 

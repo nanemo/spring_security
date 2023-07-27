@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-<form name="f" method="post" action="process_login">
+<form name="f" method="post" action="/process_login">
     <label for="username">Enter username: </label>
     <input type="text" name="username" id="username"/>
     <br/>
@@ -17,6 +17,10 @@
     <div th:if="${param.error}" style="color: red">
         Wrong login or password
     </div>
+</form>
+<br/>
+<form name="registration" method="get" action="/auth/registration">
+    <input type="submit" value="sign up">
 </form>
 </body>
 </html>
